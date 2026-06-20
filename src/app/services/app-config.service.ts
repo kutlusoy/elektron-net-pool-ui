@@ -10,8 +10,18 @@ interface RuntimeConfig {
 
 declare global {
   interface Window {
+    __ELEKTRON_POOL_CONFIG__?: RuntimeConfig;
+    // Legacy global from the upstream Public Pool fork; still honoured for
+    // deployments that have not regenerated runtime-config.js yet.
     __PUBLIC_POOL_CONFIG__?: RuntimeConfig;
   }
+}
+
+function runtimeConfig(): RuntimeConfig | undefined {
+  if (typeof window === 'undefined') {
+    return undefined;
+  }
+  return window.__ELEKTRON_POOL_CONFIG__ ?? window.__PUBLIC_POOL_CONFIG__;
 }
 
 @Injectable({
@@ -21,7 +31,7 @@ export class AppConfigService {
 
   public get apiUrl(): string {
     if (this.hasRuntimeValue('API_URL')) {
-      return this.normalizeBaseUrl(window.__PUBLIC_POOL_CONFIG__?.API_URL);
+      return this.normalizeBaseUrl(runtimeConfig()?.API_URL);
     }
 
     return this.normalizeBaseUrl(environment.API_URL);
@@ -29,7 +39,7 @@ export class AppConfigService {
 
   public get stratumUrl(): string {
     if (this.hasRuntimeValue('STRATUM_URL')) {
-      return this.resolveStratumUrl(window.__PUBLIC_POOL_CONFIG__?.STRATUM_URL);
+      return this.resolveStratumUrl(runtimeConfig()?.STRATUM_URL);
     }
 
     return this.resolveStratumUrl(environment.STRATUM_URL);
@@ -37,16 +47,15 @@ export class AppConfigService {
 
   public get secureStratumUrl(): string {
     if (this.hasRuntimeValue('SECURE_STRATUM_URL')) {
-      return this.resolveSecureStratumUrl(window.__PUBLIC_POOL_CONFIG__?.SECURE_STRATUM_URL);
+      return this.resolveSecureStratumUrl(runtimeConfig()?.SECURE_STRATUM_URL);
     }
 
     return this.resolveSecureStratumUrl(environment.SECURE_STRATUM_URL);
   }
 
   private hasRuntimeValue(key: keyof RuntimeConfig): boolean {
-    return typeof window !== 'undefined'
-      && !!window.__PUBLIC_POOL_CONFIG__
-      && Object.prototype.hasOwnProperty.call(window.__PUBLIC_POOL_CONFIG__, key);
+    const cfg = runtimeConfig();
+    return !!cfg && Object.prototype.hasOwnProperty.call(cfg, key);
   }
 
   private normalizeBaseUrl(value: string | undefined): string {

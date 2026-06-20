@@ -72,7 +72,7 @@ export class SplashComponent {
           labels: chartData.map((d: any) => d.label),
           datasets: [
             {
-              label: 'Public-Pool Hashrate',
+              label: 'Elektron Net Pool Hashrate',
               data: chartData.map((d: any) => this.toChartPoint(d)),
               fill: true,
               backgroundColor: (context: any) => this.getChartGradient(context, primaryColor),

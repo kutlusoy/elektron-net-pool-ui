@@ -20,8 +20,8 @@ describe('AppConfigService', () => {
     const service = new AppConfigService();
 
     expect(service.apiUrl).toBe('http://localhost:3334');
-    expect(service.stratumUrl).toBe('public-pool.io:3333');
-    expect(service.secureStratumUrl).toBe('public-pool.io:4333');
+    expect(service.stratumUrl).toBe('pool.elektron-net.org:3333');
+    expect(service.secureStratumUrl).toBe('pool.elektron-net.org:4333');
   });
 
   it('uses same-origin API requests when runtime API_URL is explicitly empty', () => {

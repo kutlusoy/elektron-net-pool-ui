@@ -6,22 +6,16 @@
                 <div class="grid align-items-center">
                     <div class="col-12 lg:col-5">
                         <div class="hero-brand">
-                            <img class="hero-logo" src="assets/layout/images/logo.svg" alt="Public Pool logo">
+                            <img class="hero-logo" src="assets/layout/images/logo.svg" alt="Elektron Net Pool logo">
                             <div class="min-w-0">
-                                <h1 class="text-900 font-normal m-0">Public Pool</h1>
-                                <code>Fully Open Source Solo Bitcoin Mining Pool</code>
+                                <h1 class="text-900 font-normal m-0">Elektron Net Pool</h1>
+                                <code>Open Source Solo Mining Pool for Elektron Net</code>
                                 <div class="hero-footer">
                                     <span><b>NO FEES</b></span>
                                     <span>No second best.</span>
                                 </div>
                                 <div class="hero-links">
-                                    <a href="https://twitter.com/Public_Pool_BTC" target="_blank">
-                                        <i class="pi pi-twitter"></i>
-                                    </a>
-                                    <a href="https://discord.gg/pF9smpe3yE" target="_blank">
-                                        <i class="pi pi-discord"></i>
-                                    </a>
-                                    <a href="https://github.com/benjamin-wilson/public-pool" target="_blank">
+                                    <a href="https://github.com/kutlusoy/elektron-net-pool" target="_blank">
                                         <i class="pi pi-github"></i>
                                     </a>
                                 </div>
@@ -65,15 +59,15 @@
                             </ng-container>
                             <div class="connection-row">
                                 <span>Username</span>
-                                <code>&lt;your BTC address&gt;.&lt;worker name&gt;</code>
+                                <code>&lt;your ELEK address&gt;.&lt;worker name&gt;</code>
                                 <button pButton type="button" icon="pi pi-copy" class="p-button-text p-button-sm"
-                                    (click)="copyText('<your BTC address>.<worker name>', 'Username')" title="Copy username format"></button>
+                                    (click)="copyText('<your ELEK address>.<worker name>', 'Username')" title="Copy username format"></button>
                             </div>
                         </div>
                         <div class="lookup-panel">
                             <div class="lookup-heading">Worker Lookup</div>
                             <div class="login-panel">
-                                <input [formControl]="address" placeholder="Address (bc1...)" pInputText id="address"
+                                <input [formControl]="address" placeholder="Address (be1...)" pInputText id="address"
                                     type="text" class="p-inputtext p-component p-element">
                                 <button [disabled]="address.invalid" pButton label="My Workers"
                                     [routerLink]="['app',address.value]"></button>
@@ -309,25 +303,5 @@
             </div>
         </div>
 
-        <div class="col-12">
-            <div class="card">
-                <div class="grid">
-                    <div class="col-12 md:col-2">
-                        <h3>Donate</h3>
-                        <p>Like the project? Consider a donation. </p>
-                    </div>
-                    <div class="col-12 md:col-4 text-center">
-                        <img style="height: 200px;" src="assets/layout/images/qr-code-ln.svg"
-                            alt="bc1q99n3pu025yyu0jlywpmwzalyhm36tg5u37w20d">
-                        <div>public_pool&#64;strike.me</div>
-                    </div>
-                    <div class="col-12 md:col-6 text-center">
-                        <img style="height: 200px;" src="assets/layout/images/qr-code-onchain.svg"
-                            alt="bc1q99n3pu025yyu0jlywpmwzalyhm36tg5u37w20d">
-                        <div>bc1q99n3pu025yyu0jlywpmwzalyhm36tg5u37w20d</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

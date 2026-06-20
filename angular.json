@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "public-pool-ui": {
+    "elektron-net-pool-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/public-pool-ui",
+            "outputPath": "dist/elektron-net-pool-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -120,10 +120,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "public-pool-ui:build:production"
+              "browserTarget": "elektron-net-pool-ui:build:production"
             },
             "development": {
-              "browserTarget": "public-pool-ui:build:development"
+              "browserTarget": "elektron-net-pool-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -131,7 +131,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "public-pool-ui:build"
+            "browserTarget": "elektron-net-pool-ui:build"
           }
         },
         "test": {

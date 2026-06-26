@@ -281,7 +281,10 @@
         <div class="col-12" *ngIf="blockData$ | async as blockData">
             <div class="card">
                 <h4 style="text-align: center;"> Found Blocks</h4>
-                <p-table [value]="blockData" styleClass="compact-table">
+                <p-table [value]="blockData" styleClass="compact-table"
+                    [paginator]="blockData.length > 10" [rows]="10"
+                    [showCurrentPageReport]="true"
+                    currentPageReportTemplate="{first} - {last} of {totalRecords}">
                     <ng-template pTemplate="header">
                         <tr>
                             <th class="numeric-cell">Height</th>

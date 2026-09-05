@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackgroundParticlesComponent } from './components/background-particles/background-particles.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PoolIdentityComponent } from './components/pool-identity/pool-identity.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SplashComponent } from './components/splash/splash.component';
 import { UserAgentLinkComponent } from './components/user-agent-link/user-agent-link.component';
@@ -36,7 +37,8 @@ import { AverageTimeToBlockPipe } from './pipes/average-time-to-block.pipe';
     BackgroundParticlesComponent,
     HashSuffixPipe,
     SettingsComponent,
-    UserAgentLinkComponent
+    UserAgentLinkComponent,
+    PoolIdentityComponent
   ],
   imports: [
     CommonModule,

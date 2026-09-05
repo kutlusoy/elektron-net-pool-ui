@@ -4,6 +4,15 @@ import { Observable } from 'rxjs';
 
 import { AppConfigService } from './app-config.service';
 
+// Same values elektron-net-pool's MiningJob.ts embeds on-chain as
+// pool-identity OP_RETURN outputs (doc-elektron/guideline-pool-identity-op-return.md
+// in that repo). Either field is null if the operator hasn't configured it,
+// in which case that coinbase output isn't produced at all.
+export interface IPoolIdentityInfo {
+    name: string | null;
+    url: string | null;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -25,5 +34,8 @@ export class AppService {
     }
     public getAccounting() {
         return this.httpClient.get(`${this.appConfig.apiUrl}/api/info/accounting`) as Observable<any>;
+    }
+    public getPoolIdentityInfo(): Observable<IPoolIdentityInfo> {
+        return this.httpClient.get<IPoolIdentityInfo>(`${this.appConfig.apiUrl}/api/pool/identity`);
     }
 }

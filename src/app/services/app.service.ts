@@ -4,10 +4,14 @@ import { Observable } from 'rxjs';
 
 import { AppConfigService } from './app-config.service';
 
-// Same values elektron-net-pool's MiningJob.ts embeds on-chain as
-// pool-identity OP_RETURN outputs (doc-elektron/guideline-pool-identity-op-return.md
-// in that repo). Either field is null if the operator hasn't configured it,
-// in which case that coinbase output isn't produced at all.
+// Pool-configured identity, served by elektron-net-pool's GET /pool/identity
+// endpoint. Never written on-chain (see
+// doc-elektron/fix-report-pool-identity-utxo-attestation.md in that repo);
+// the pool also reports these same values to every mempool explorer
+// instance in the shared registry so found blocks get attributed to it
+// network-wide (see doc-elektron/guideline-pool-registry-reporting.md in
+// that repo).
+// Either field is null if the operator hasn't configured it.
 export interface IPoolIdentityInfo {
     name: string | null;
     url: string | null;

@@ -3,7 +3,6 @@
         <span>Pool Identity</span>
         <strong>{{info.name || 'Unnamed pool'}}</strong>
         <a *ngIf="info.url" [href]="info.url" target="_blank" rel="noopener noreferrer">{{info.url}}</a>
-        <small>Reported to known mempool explorer instances when this pool finds a block, so the block gets
-            attributed to it network-wide. Never written into the coinbase.</small>
+        <small>Used to attribute blocks found by this pool across block explorers.</small>
     </div>
 </ng-container>
